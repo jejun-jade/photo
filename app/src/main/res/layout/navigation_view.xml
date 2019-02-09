@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jejun.album.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    android:background="#ffffff">
+
+    <!--<include layout="@layout/navigation_header"/>-->
+
+    <android.support.v7.widget.RecyclerView android:id="@+id/navigation_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.jejun.album.navigation.NavigationView>
