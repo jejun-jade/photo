@@ -1,8 +1,12 @@
 package com.jejun.album.navigation;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+
+import com.jejun.album.R;
 
 public class NavigationView extends LinearLayout {
 
@@ -27,7 +31,7 @@ public class NavigationView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mList = findViewById(R.id.nav_list);
+        mList = findViewById(R.id.navigation_list);
         mList.setHasFixedSize(true);
         mList.setLayoutManager(new LinearLayoutManager(mContext));
     }
