@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jejun.album.R;
+import com.jejun.album.Transit;
 
 public class NavigationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -40,6 +41,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             switch (mPosition) {
                 case NavConstants.SETTINGS:
                     //TODO : move settings menu
+                    Transit.login(mContext);
                     break;
             }
         }

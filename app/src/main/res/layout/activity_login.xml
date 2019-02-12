@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText android:id="@+id/login_id"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <EditText android:id="@+id/login_pw"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <Button android:id="@+id/login_submit"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
