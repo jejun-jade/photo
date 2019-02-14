@@ -34,6 +34,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mId = mUserId.getText().toString().trim();
                 mPassword = mUserPassword.getText().toString().trim();
                 // TODO : login api connect
+
+                mPassword = hash(mPassword);
+
+                Api.login(this, mId, mPassword);
+        }
+    }
+
+    private String hash(String password) {
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(password.getBytes(Charset.forName("UTF-8")));
+            byte[] digested = md.digest();
+
+            for (byte tmp : digested) {
+                sb.append(Integer.toString((tmp & 0xff) + 0x100, 16).substring(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb.toString().toUpperCase(Locale.US);
+    }
+
+    @Subscribe
+    public void onLoginResponse(LoginResponse event) {
+        if (event.success) {
+            Transit.album(this);
+            finish();
+        } else {
+            Toast.makeText(this, "login fail", Toast.LENGTH_LONG).show();
         }
     }
 }
