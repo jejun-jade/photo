@@ -2,17 +2,29 @@ package com.jejun.album.user;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jejun.album.Api;
 import com.jejun.album.R;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
+
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText mUserId, mUserPassword;
     private Button mLogin;
     private String mId, mPassword;
+    private KakaoSessionCallback callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +37,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mLogin = findViewById(R.id.login_submit);
         mLogin.setOnClickListener(this);
 
+        callback = new KakaoSessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+
     }
 
     @Override
@@ -33,11 +48,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.login_submit:
                 mId = mUserId.getText().toString().trim();
                 mPassword = mUserPassword.getText().toString().trim();
-                // TODO : login api connect
-
                 mPassword = hash(mPassword);
 
                 Api.login(this, mId, mPassword);
+                break;
+
+            case R.id.kakao_login:
+                requestKakaoUserInfo();
+                break;
         }
     }
 
@@ -58,13 +76,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return sb.toString().toUpperCase(Locale.US);
     }
 
-    @Subscribe
-    public void onLoginResponse(LoginResponse event) {
-        if (event.success) {
-            Transit.album(this);
-            finish();
-        } else {
-            Toast.makeText(this, "login fail", Toast.LENGTH_LONG).show();
-        }
+    public void requestKakaoUserInfo() {
+        UserManagement.requestMe(new MeResponseCallback() {
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+//                super.onFailure(errorResult);
+            }
+
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {}
+
+            @Override
+            public void onNotSignedUp() {
+                //카카오톡 회원이 아님
+            }
+
+            @Override
+            public void onSuccess(UserProfile result) {
+                Log.e("UserProfile", result.toString());
+                Log.e("UserProfile", result.getId() + "");
+            }
+        });
     }
+
+//    @Subscribe
+//    public void onLoginResponse(LoginResponse event) {
+//        if (event.success) {
+//            Transit.album(this);
+//            finish();
+//        } else {
+//            Toast.makeText(this, "login fail", Toast.LENGTH_LONG).show();
+//        }
+//    }
 }
