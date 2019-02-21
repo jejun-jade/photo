@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "943528137745",
+    "firebase_url": "https://food-album-dd632.firebaseio.com",
+    "project_id": "food-album-dd632",
+    "storage_bucket": "food-album-dd632.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943528137745:android:b0cf82fd7bf207fd",
+        "android_client_info": {
+          "package_name": "com.jejun.album"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943528137745-eb94piq9ia2c1psidh8kh4i3us7ru77d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArf1Uxp-KK38lmNSadmF8BqdHk7VdMVE0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
