@@ -3,6 +3,7 @@ package com.jejun.album;
 import android.app.Activity;
 import android.app.Application;
 
+import com.jejun.album.firebase.FirebaseHelper;
 import com.jejun.album.user.KakaoSDKAdapter;
 import com.kakao.auth.KakaoSDK;
 
@@ -16,6 +17,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         obj = this;
         KakaoSDK.init(new KakaoSDKAdapter());
+        FirebaseHelper.register();
     }
 
     public static BaseApplication getBaseApplicationContext() {

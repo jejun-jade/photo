@@ -34,7 +34,7 @@
         <activity android:name="com.jejun.album.user.LoginActivity">
         </activity>
 
-        <service android:name="com.jejun.album.firebase.FcmService">
+        <service android:name="com.jejun.album.firebase.FirebaseService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
