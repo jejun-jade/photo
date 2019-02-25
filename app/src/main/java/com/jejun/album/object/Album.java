@@ -9,4 +9,5 @@ public class Album {
     public String cover;
     public ArrayList<String> image_list;
     public int count;
+
 }

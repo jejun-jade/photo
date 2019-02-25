@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.widget.Toast;
 
+import com.jejun.album.Api;
 import com.jejun.album.R;
 import com.jejun.album.object.Album;
 
@@ -50,6 +51,7 @@ public class AlbumActivity extends AppCompatActivity {
         mTabLayout.initialize(viewPager, getSupportFragmentManager(), fragmentList, savedInstanceState);
 
         requestPermissionCamera();
+        Api.request(this, "user_idx"); // TODO : 암호화
     }
 
     @Override
