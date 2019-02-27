@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.jejun.album.R;
 
-public class FragmentAlbum extends Fragment {
+public class FragmentAlbum extends BaseFragment {
 
     public static FragmentAlbum newInstance() {
         FragmentAlbum fragment = new FragmentAlbum();

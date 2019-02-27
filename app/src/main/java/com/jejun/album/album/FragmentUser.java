@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jejun.album.R;
 
-public class FragmentUser extends Fragment {
+public class FragmentUser extends BaseFragment implements View.OnClickListener {
+
+    public TextView userName, userEmail, userKakao, userQuit;
 
     public static FragmentUser newInstance() {
         FragmentUser fragment = new FragmentUser();
@@ -32,6 +35,22 @@ public class FragmentUser extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         activity = getActivity();
+
+        userName = view.findViewById(R.id.user_name);
+        userEmail = view.findViewById(R.id.user_email);
+        userKakao = view.findViewById(R.id.user_kakao);
+        userQuit = view.findViewById(R.id.user_quit);
+
+        userName.setOnClickListener(this);
+        userEmail.setOnClickListener(this);
+        userKakao.setOnClickListener(this);
+        userQuit.setOnClickListener(this);
+
+
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }

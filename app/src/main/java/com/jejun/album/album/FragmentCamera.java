@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.jejun.album.R;
 
-public class FragmentCamera extends Fragment {
+public class FragmentCamera extends BaseFragment {
 
     public static FragmentCamera newInstance() {
         FragmentCamera fragment = new FragmentCamera();
