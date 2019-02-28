@@ -1,11 +1,13 @@
 package com.jejun.album.album;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.jejun.album.R;
@@ -46,7 +48,32 @@ public class FragmentUser extends BaseFragment implements View.OnClickListener {
         userKakao.setOnClickListener(this);
         userQuit.setOnClickListener(this);
 
+        // Threshold for minimal keyboard height.
+        final int MIN_KEYBOARD_HEIGHT_PX = 150;
 
+        final View decorView = activity.getWindow().getDecorView();
+
+        decorView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            private final Rect windowVisibleDisplayFrame = new Rect();
+            private int lastVisibleDecorViewHeight;
+
+            @Override
+            public void onGlobalLayout() {
+                decorView.getWindowVisibleDisplayFrame(windowVisibleDisplayFrame);
+                final int visibleDecorViewHeight = windowVisibleDisplayFrame.height();
+
+                if (lastVisibleDecorViewHeight != 0) {
+                    if (lastVisibleDecorViewHeight > visibleDecorViewHeight + MIN_KEYBOARD_HEIGHT_PX) {
+                        int currentKeyboardHeight = decorView.getHeight() - windowVisibleDisplayFrame.bottom;
+//                        listener.onKeyboardShown(currentKeyboardHeight);
+                    } else if (lastVisibleDecorViewHeight + MIN_KEYBOARD_HEIGHT_PX < visibleDecorViewHeight) {
+//                        listener.onKeyboardHidden();
+                    }
+                }
+                // Save current decor view height for the next call.
+                lastVisibleDecorViewHeight = visibleDecorViewHeight;
+            }
+        });
     }
 
     @Override
