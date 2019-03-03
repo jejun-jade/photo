@@ -4,4 +4,8 @@
     <string name="setting">Settings</string>
 
     <string name="kakao_app_key">key value</string>
+
+    <string name="user_id">Enter ID</string>
+    <string name="user_pw">Enter Password</string>
+
 </resources>

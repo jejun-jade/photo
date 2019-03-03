@@ -19,11 +19,25 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.util.Locale;
 
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mUserId, mUserPassword;
-    private Button mLogin;
-    private String mId, mPassword;
+    @BindView(R.id.login_id)
+    EditText mUserId;
+    @BindView(R.id.login_pw)
+    EditText mUserPassword;
+
+    @BindView(R.id.login_submit)
+    Button mLogin;
+    @BindString(R.string.user_id)
+    String mId;
+    @BindString(R.string.user_pw)
+    String mPassword;
+
     private KakaoSessionCallback callback;
 
     @Override
@@ -39,23 +53,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         callback = new KakaoSessionCallback();
         Session.getCurrentSession().addCallback(callback);
+        ButterKnife.bind(this);
 
+    }
+
+    @OnClick(R.id.login_submit)
+    public void submit(View view) {
+        mId = mUserId.getText().toString().trim();
+        mPassword = mUserPassword.getText().toString().trim();
+        mPassword = hash(mPassword);
+
+        Api.login(this, mId, mPassword);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_submit:
-                mId = mUserId.getText().toString().trim();
-                mPassword = mUserPassword.getText().toString().trim();
-                mPassword = hash(mPassword);
-
-                Api.login(this, mId, mPassword);
-                break;
-
-            case R.id.kakao_login:
-                requestKakaoUserInfo();
-                break;
+//            case R.id.kakao_login:
+//                requestKakaoUserInfo();
+//                break;
         }
     }
 
