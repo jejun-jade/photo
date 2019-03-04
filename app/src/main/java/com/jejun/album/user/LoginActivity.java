@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.jejun.album.Api;
 import com.jejun.album.R;
+import com.jejun.album.UtilsKt;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -23,6 +24,8 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.jejun.album.UtilsKt.formatMessage;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -72,6 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //            case R.id.kakao_login:
 //                requestKakaoUserInfo();
 //                break;
+            mUserId.setText(UtilsKt.formatMessage("jejun"));
+//            Log.e("TEST", UtilsKt.formatMessage("jejun"));
         }
     }
 
