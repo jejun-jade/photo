@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jejun.album.Api;
 import com.jejun.album.R;
@@ -24,6 +25,7 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.drakeet.support.toast.ToastCompat;
 
 import static com.jejun.album.UtilsKt.formatMessage;
 
