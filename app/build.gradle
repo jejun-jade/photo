@@ -47,5 +47,13 @@ dependencies {
 
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
 
+    // Error:Conflict with dependency 'com.android.support:support-annotations'.
+    // Resolved versions for app (23.3.0) and test app (23.1.1) differ.
+    // See http://g.co/androidstudio/app-test-app-conflict for details.
+    androidTestCompile 'com.android.support:support-annotations:28.0.0'
+
+    // Test dependency
+    androidTestCompile 'com.android.support.test:runner:1.0.2'
+
 }
 apply plugin: 'com.google.gms.google-services'
